@@ -10,7 +10,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <PublicProtection children={<MainLayout />} />,
     children: [
-      ...homeRouter,
       ...authRouting
     ]
   },
