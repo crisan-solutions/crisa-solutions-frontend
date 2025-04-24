@@ -51,12 +51,12 @@ export const Header = () => {
             </Box>
 
             <Box className="flex flex-nowrap flex-row gap-4">
-                <CustomButton
+                {/* <CustomButton
                     startIcon={<VisibilityOutlinedIcon />}
                     variant="text"
                 >
                     Ocultar Saldos
-                </CustomButton>
+                </CustomButton> */}
                 <Box className="flex flex-row flex-nowrap items-center">
                     <PersonOutlineOutlinedIcon color="primary" />
                     <Typography>

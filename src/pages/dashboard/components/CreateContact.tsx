@@ -34,43 +34,31 @@ export const CreateContact = () => {
   });
   return (
     <>
-      <Button onClick={() => { navigate("/contacts") }}>
+      <Button onClick={() => { navigate("/services") }}>
         <ArrowBackIcon style={{ color: "#49BEB7" }} />
       </Button>
       <Typography className="!ml-12" fontFamily={theme.typography.fontFamily} fontSize={"2rem"}>
-        Crear Nuevo Contacto
+        Crear Nuevo Servicio
       </Typography>
       <Paper className="!w-2/3 !h-[460px] !justify-center ml-[16vw]">
         <form onSubmit={handleSubmit}>
           <TextField
             className="!mt-12 !ml-12 !w-[20vw]"
-            label="Alias"
+            label="Nombre"
+            type="number"
             name="alias"
-            value={values.alias}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.alias && Boolean(errors.alias?.length)}
-            helperText={errors.alias}
           />
           <TextField
             className="!mt-12 !ml-[4.8rem] !w-[20vw]"
-            label="Numero de Cuenta"
+            label="Descripcion"
             name="account_number"
-            value={values.account_number}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.account_number && Boolean(errors.account_number?.length)}
-            helperText={errors.account_number?.length ? "Debe solo contener números (20 caracteres)" : ""}
+            type="number"
           />
           <TextField
             className="!my-8 !ml-12 !w-[44vw]"
-            label="Descripción"
+            label="Costo"
             name="description"
-            value={values.description}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.description && Boolean(errors.description?.length)}
-            helperText={errors.description}
+            type="number"
           />
           <Button className="!flex w-36 !ml-auto !mr-12 !my-6 !bg-[#085F63] !text-[white]" type="submit">
             Guardar

@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import { ResultTransfer } from './components'
 
-export const RESULT_ROUTE = 'result';
+export const RESULT_ROUTE = 'edit';
 
 export const ResultTransferPage = () => {
   return (

@@ -2,8 +2,8 @@ import { Home, } from "@mui/icons-material";
 import HistoryIcon from '@mui/icons-material/History';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
-import PaidIcon from '@mui/icons-material/Paid';
-import { CONFIG_ROUTE, CONTACTS_ROUTE, DASHBOARD_ROUTE, HISTORY_ROUTE, TRANSFER_ROUTE } from "@pages/dashboard";
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import {  CLIENTS_ROUTE, DASHBOARD_ROUTE, PLANIFICATION_ROUTE, SERVICES_ROUTE, USER_ROUTE } from "@pages/dashboard";
 
 export const pathList = [
     {
@@ -12,23 +12,23 @@ export const pathList = [
         icon: <Home />
     },
     {
-        to: HISTORY_ROUTE,
-        text: 'Historial',
+        to: PLANIFICATION_ROUTE,
+        text: 'Planificaión',
         icon: <HistoryIcon />
     },
     {
-        to: CONTACTS_ROUTE,
-        text: 'Contactos',
-        icon: <PersonIcon />
+        to: SERVICES_ROUTE,
+        text: 'Servicios',
+        icon: <AssignmentIcon />
     },
     {
-        to: CONFIG_ROUTE,
+        to: USER_ROUTE,
         text: 'Configuración',
         icon: <SettingsIcon />
     },
-    {
-        to: TRANSFER_ROUTE,
-        text: 'Transferir',
-        icon: <PaidIcon />
-    },
+    // {
+    //     to: CLIENTS_ROUTE,
+    //     text: 'Clientes',
+    //     icon: <PersonIcon />
+    // },
 ]

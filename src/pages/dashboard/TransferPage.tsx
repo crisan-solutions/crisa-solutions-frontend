@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material"
 import { useTheme } from "styled-components";
 import { CreateTrasfer } from "./components";
 
-export const TRANSFER_ROUTE = 'transfer';
+export const CLIENTS_ROUTE = 'clients';
 
 export const TransferPage = () => {
     const theme = useTheme();

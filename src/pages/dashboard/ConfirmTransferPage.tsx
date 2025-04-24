@@ -4,7 +4,7 @@ import { Box } from '@mui/material'
 import { RootState } from '@store/store';
 import { MovementsState } from '@interfaces/movements.interface';
 import { Navigate } from 'react-router-dom';
-export const CONFIRM_ROUTE = "confirm";
+export const CONFIRM_ROUTE = "create";
 export const ConfirmTransferPage = () => {
     const { userToTransfer } = useSelector<RootState>((state) => state.movements) as MovementsState;
     if (!userToTransfer) return <Navigate to="/transfer"></Navigate>

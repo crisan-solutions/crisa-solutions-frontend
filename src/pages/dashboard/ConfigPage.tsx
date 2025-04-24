@@ -1,7 +1,7 @@
 import { Box } from "@mui/material"
 import { ChangePassword } from "./components";
 
-export const CONFIG_ROUTE = 'config';
+export const USER_ROUTE = 'usuario';
 
 export const ConfigPage = () => {
   return (

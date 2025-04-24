@@ -17,19 +17,19 @@ export const dashBoardRouting: RouteObject[] = [
         ]
     },
     {
-        path: "/plaification",
+        path: "/planification",
         children: [
             {
                 path: "",
                 lazy: async () => {
-                    const { HistoryPage } = await import("../pages/dashboard")
-                    return { Component: HistoryPage }
+                    const { PlanificationPage } = await import("../pages/dashboard")
+                    return { Component: PlanificationPage }
                 }
             }
         ]
     },
     {
-        path: "/user",
+        path: "/usuario",
         children: [
             {
                 path:"",
@@ -77,14 +77,14 @@ export const dashBoardRouting: RouteObject[] = [
                 }
             },
             {
-                path:`/transfer/${CONFIRM_ROUTE}`,
+                path:`/clients/${CONFIRM_ROUTE}`,
                 lazy: async () => {
                     const { ConfirmTransferPage } = await import("../pages/dashboard")
                     return { Component: ConfirmTransferPage }
                 }
             },
             {
-                path:`/transfer/${RESULT_ROUTE}`,
+                path:`/clients/${RESULT_ROUTE}`,
                 lazy: async () => {
                     const { ResultTransferPage } = await import("../pages/dashboard")
                     return { Component: ResultTransferPage }

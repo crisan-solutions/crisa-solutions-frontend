@@ -49,7 +49,7 @@ export const EditContact = () => {
     }
   return (
     <>
-    <Button onClick={()=>{navigate("/contacts")}}>
+    <Button onClick={()=>{navigate("/services")}}>
       <ArrowBackIcon style={{ color: "#49BEB7"}}/>
     </Button>
     <Typography className="!ml-12" fontFamily={theme.typography.fontFamily} fontSize={"2rem"}>

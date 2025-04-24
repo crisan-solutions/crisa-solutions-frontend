@@ -1,7 +1,7 @@
 import { Box } from "@mui/material"
 import { ContactsDirectory } from "./components"
 
-export const CONTACTS_ROUTE = 'contacts';
+export const SERVICES_ROUTE = 'services';
 
 export const ContactsPage = () => {
   return (

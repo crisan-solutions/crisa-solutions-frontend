@@ -1,16 +1,15 @@
-import { MenuItem, Paper, Select, SelectChangeEvent, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material"
+import { Input, MenuItem, Paper, Select, SelectChangeEvent, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material"
 import { useEffect, useState } from "react"
-import { getMovementsApi } from "../../../services/modules/movement";
 import ArrowCircleUpOutlinedIcon from '@mui/icons-material/ArrowCircleUpOutlined';
 import ArrowCircleDownOutlinedIcon from '@mui/icons-material/ArrowCircleDownOutlined';
-import { GetMovementsParams, MovementsData } from "@interfaces/movements.interface";
+import { MovementsData } from "@interfaces/movements.interface";
 
 export const TransferHistory = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [page_count, setPageCount] = useState(0);
+  const [page_count] = useState(0);
   const [multiplierFilter, setMultiplierFilter] = useState(0);
-  const [transferData, setTransferData] = useState<MovementsData[]>([]);
+  const [transferData] = useState<MovementsData[]>([]);
   const formatDate = (date: string) => {
     if (!date) return ""
     return new Date(date).toLocaleDateString("es", { hour12: true, month: "short", hour: "2-digit", minute: "2-digit", day: "2-digit", year: "numeric" });
@@ -25,47 +24,59 @@ export const TransferHistory = () => {
     setPage(newPage);
   };
   const handleChangeRowsPerPage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setRowsPerPage(+e.target.value);
-    setPage(0);
+    console.log(e);
   };
   const handleMultiplierChange = (event: SelectChangeEvent) => {
-    setMultiplierFilter(+event.target.value);
+    console.log(event);
+    
   };
-  
+
   useEffect(() => {
-    const params:GetMovementsParams = { page:page+1, page_size:rowsPerPage, multiplier:multiplierFilter }
-    getMovementsApi(params).then(res => {
-      if (!res?.data?.errors?.length) {
-        const { data } = res?.data;
-        setPageCount(+res?.headers["x-pagination-page-count"]);
-        setTransferData(data);
-      }
-    });
-  }, [page, rowsPerPage, multiplierFilter]);
+
+  }, []);
 
   return (
     <>
-      <Select
-        className="!flex !ml-auto !mr-[11.5vw] !bg-white w-1/6"
-        value={multiplierFilter.toString()}
-        labelId="filter"
-        id="multiplierFilter"
-        label="Filtrar movimientos"
-        onChange={handleMultiplierChange}>
-        <MenuItem value={0}>Todos</MenuItem>
-        <MenuItem value={-1}>Débitos</MenuItem>
-        <MenuItem value={1}>Créditos</MenuItem>
-      </Select>
+      <div className="flex row gap-2 items-center  pl-8 mx-auto flex-wrap !w-2/3">
+        <Input className="w-1/4" placeholder="Fecha de inicio" title="Fecha inicio" type="date" />
+        <Input className="w-1/4" placeholder="Fecha fin estimada" title="Fecha fin estimada" type="date" />
+        <Select
+          className="!flex !bg-white w-1/4"
+          value={multiplierFilter.toString()}
+          labelId="filter"
+          id="multiplierFilter"
+          label="Tipo de planificacion"
+          onChange={handleMultiplierChange}
+          placeholder="Tipo de planificacion"
+          >
+          <MenuItem value={0}>Revision</MenuItem>
+          <MenuItem value={1}>Planificacion</MenuItem>
+          <MenuItem value={2}>Vigilancia</MenuItem>
+        </Select>
+        <Select
+          className="!flex !bg-white w-1/4"
+          labelId="status"
+          id="status"
+          label="Estado"
+          onChange={handleMultiplierChange}
+          placeholder="Estado"
+          >
+          <MenuItem value={0}>Activo</MenuItem>
+          <MenuItem value={1}>Inactivo</MenuItem>
+          <MenuItem value={2}>Pausado</MenuItem>
+          <MenuItem value={3}>Suspendido</MenuItem>
+        </Select>
+        <Input className="w-1/3" placeholder="Cliente" type="text" />
+      </div>
       <TableContainer className="flex !w-2/3 !justify-center ml-[16vw]" component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell className="!text-[#779C9D] !font-bold" align="center">Descripción</TableCell>
-              <TableCell className="!text-[#779C9D] !font-bold" align="center">Ref</TableCell>
-              <TableCell className="!text-[#779C9D] !font-bold" align="center">Fecha</TableCell>
-              <TableCell className="!text-[#779C9D] !font-bold" align="center">Saldo</TableCell>
-              <TableCell className="!text-[#779C9D] !font-bold" align="center">Saldo Transferencias</TableCell>
+              <TableCell className="!text-[#779C9D] !font-bold" align="center">Fecha de inicio</TableCell>
+              <TableCell className="!text-[#779C9D] !font-bold" align="center">Fecha fin estimada</TableCell>
+              <TableCell className="!text-[#779C9D] !font-bold" align="center">Estado</TableCell>
+              <TableCell className="!text-[#779C9D] !font-bold" align="center">Tipo</TableCell>
+              <TableCell className="!text-[#779C9D] !font-bold" align="center">Cliente</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

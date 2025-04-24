@@ -1,4 +1,4 @@
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, TextField, Typography } from "@mui/material"
+import { Button, Input, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, TextField, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
 import { getContacts } from "../../../services/modules/contact";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -25,9 +25,7 @@ export const ContactsDirectory = () => {
     else if (account.length < 20) return account
     return `${account.substring(0, 4)} **** **** **** ${account.substring(16, 21)}`
   };
-  const handleAliasChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAlias(e.target.value);
-  };
+
   const handleChangePage = (e: unknown, newPage: number) => {
     console.log({ e });
 
@@ -43,7 +41,7 @@ export const ContactsDirectory = () => {
     navigate("/contacts/edit");
   };
   useEffect(() => {
-    const params = { page: page+1, page_size: rowsPerPage, alias: alias };
+    const params = { page: page + 1, page_size: rowsPerPage, alias: alias };
     getContacts(params).then(res => {
       if (!res?.data?.errors?.length) {
         // eslint-disable-next-line no-unsafe-optional-chaining
@@ -59,24 +57,21 @@ export const ContactsDirectory = () => {
         Directorio de Contactos
       </Typography>
       <Button className="!flex !bg-[#085F63] !text-[white] !ml-auto !mr-2 !my-2 !w-32"
-        onClick={() => { navigate("/contacts/create") }}
+        onClick={() => { navigate("/services/create") }}
       >
         <AddIcon />
         Agregar
       </Button>
-      <TextField
-        className="!flex !ml-auto !mr-[11.5vw] !bg-white w-1/6"
-        label="Buscar"
-        name="alias"
-        onChange={handleAliasChange}
-      />
+      <div className="flex row gap-2 items-center  pl-8 mx-auto flex-wrap !w-2/3">
+        <Input className="w-1/3" placeholder="Nombre" type="text" />
+      </div>
       <TableContainer className="flex !w-2/3 !justify-center ml-[16vw]" component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell className="!text-[#779C9D] !font-bold" align="center">Beneficiario</TableCell>
-              <TableCell className="!text-[#779C9D] !font-bold" align="center">Descripción</TableCell>
-              <TableCell className="!text-[#779C9D] !font-bold" align="center">Numero de Cuenta</TableCell>
+              <TableCell className="!text-[#779C9D] !font-bold" align="center">Nombre</TableCell>
+              <TableCell className="!text-[#779C9D] !font-bold" align="center">Descripcion</TableCell>
+              <TableCell className="!text-[#779C9D] !font-bold" align="center">Costo Base</TableCell>
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
@@ -88,7 +83,7 @@ export const ContactsDirectory = () => {
                   <TableCell align="center">{data.description}</TableCell>
                   <TableCell align="center">{formatAccountNumber(data.account_number)}</TableCell>
                   <TableCell align="center">
-                    <Button className="!text-[#49BEB7] !font-bold" onClick={()=>{handleClick(data)}}>
+                    <Button className="!text-[#49BEB7] !font-bold" onClick={() => { handleClick(data) }}>
                       Ver Detalle
                       <ArrowForwardIosIcon style={{ color: "#49BEB7", marginLeft: "10px" }} />
                     </Button>
