@@ -148,16 +148,9 @@ export const LoginForm: React.FC = () => {
             justifyContent="center"
             style={{ marginBottom: "20px" }}
           >
-            <a href="/">
-              <img
-                alt="logo"
-                src={logo}
-                className="responsive"
-                style={{ maxWidth: "180px", marginBottom: "20px" }}
-              />
-            </a>
+
             <Typography style={titlestyle} gutterBottom>
-              Bienvenido a Banca en Linea
+              Crisan Solutions
             </Typography>
             <Typography style={subTitleStyle}>
               Ingresa tu correo y tu contraseña para comenzar
